@@ -1,27 +1,20 @@
-import { tools } from "@/lib/tools";
-import { notFound } from "next/navigation";
+"use client";
+import dynamic from "next/dynamic";
+import { tools, Tool } from "@/lib/tools";
 
-export function generateStaticParams() {
-  return tools.map((tool) => ({ slug: tool.slug }));
-}
-
-export function generateMetadata({ params }: { params: { slug: string } }) {
+export default function ToolPage({ params }: { params: { slug: string } }) {
   const tool = tools.find((t) => t.slug === params.slug);
-  return {
-    title: tool ? `${tool.title} | MyTools` : "ツールが見つかりません",
-    description: tool?.desc,
-  };
-}
+  if (!tool) return <div>ツールが見つかりません</div>;
 
-export default function ToolDetailPage({ params }: { params: { slug: string } }) {
-  const tool = tools.find((t) => t.slug === params.slug);
-  if (!tool) return notFound();
+  const Component = dynamic(() =>
+    import(`@/app/tools/${tool.slug}/${tool.slug}Client`)
+  );
 
   return (
-    <section className="py-16 max-w-3xl mx-auto">
+    <section>
       <h2 className="text-3xl font-bold mb-6">{tool.title}</h2>
       <p className="text-gray-600 mb-8">{tool.desc}</p>
-      {tool.component}
+      <Component />
     </section>
   );
 }
