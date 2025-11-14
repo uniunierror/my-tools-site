@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const tools = [
   { title: "文字数カウント", slug: "text-counter", desc: "入力した文章の文字数を即時にカウント" },
-  { title: "日付計算ツール", slug: "date-calc", desc: "2つの日付の差を計算します" },
+  { title: "日付計算", slug: "date-calc", desc: "2つの日付の差を計算します" },
 ];
 
 export default function HomePage() {
