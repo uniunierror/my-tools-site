@@ -1,6 +1,6 @@
 "use client";
 import dynamic from "next/dynamic";
-import { tools, Tool } from "@/lib/tools";
+import { tools } from "@/lib/tools";
 
 export default function ToolPage({ params }: { params: { slug: string } }) {
   const tool = tools.find((t) => t.slug === params.slug);
