@@ -6,7 +6,6 @@ type Props = {
   html: string;
 };
 
-// ✅ 記事本文描画（React 19対応）
 export default function PostBody({ html }: Props) {
   const ref = useRef<HTMLDivElement>(null);
 

@@ -17,7 +17,6 @@ export type Post = PostMeta & {
 
 const postsDirectory = path.join(process.cwd(), "posts");
 
-// ✅ 全記事メタデータ取得（一覧用）
 export async function getAllPostsMeta(): Promise<PostMeta[]> {
   const fileNames = fs.readdirSync(postsDirectory);
   const posts = await Promise.all(
@@ -38,7 +37,6 @@ export async function getAllPostsMeta(): Promise<PostMeta[]> {
   return posts.sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
-// ✅ スラッグ指定で記事取得
 export async function getPostBySlug(slug: string): Promise<Post | null> {
   const fullPath = path.join(postsDirectory, `${slug}.md`);
   if (!fs.existsSync(fullPath)) return null;

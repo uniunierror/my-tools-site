@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "ブログ一覧 | My Tools",
     description: "最新の記事一覧をお届けします。",
-    url: "https://your-domain.com/blog",
+    url: "https://my-tools-site-git-main-uniunierrors-projects.vercel.app/blog",
     siteName: "My Tools",
     locale: "ja_JP",
     type: "website",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     description: "最新の記事一覧をお届けします。",
   },
   alternates: {
-    canonical: "https://your-domain.com/blog",
+    canonical: "https://my-tools-site-git-main-uniunierrors-projects.vercel.app/blog",
   },
 };
 
@@ -38,12 +38,12 @@ export default async function BlogPage() {
             "@context": "https://schema.org",
             "@type": "Blog",
             name: "My Tools Blog",
-            url: "https://your-domain.com/blog",
+            url: "https://my-tools-site-git-main-uniunierrors-projects.vercel.app/blog",
             description: "最新の記事一覧をお届けします。",
             blogPost: posts.map((post) => ({
               "@type": "BlogPosting",
               headline: post.title,
-              url: `https://your-domain.com/blog/${post.slug}`,
+              url: `https://my-tools-site-git-main-uniunierrors-projects.vercel.app/blog/${post.slug}`,
               datePublished: post.date,
               dateModified: post.date,
               description: post.description,

@@ -17,12 +17,12 @@ export const metadata: Metadata = {
     title: "改行削除ツール｜MyTools",
     description:
       "文章中の改行をワンクリックで削除できる便利な無料ツール。",
-    url: "https://example.com/tools/remove-newline",
+    url: "https://my-tools-site-git-main-uniunierrors-projects.vercel.app/tools/remove-newline",
     siteName: "MyTools",
     locale: "ja_JP",
     type: "website",
   },
-  alternates: { canonical: "https://example.com/tools/remove-newline" },
+  alternates: { canonical: "https://my-tools-site-git-main-uniunierrors-projects.vercel.app/tools/remove-newline" },
 };
 
 export default function RemoveNewlinePage() {

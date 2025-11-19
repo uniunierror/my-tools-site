@@ -8,12 +8,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: "文字数カウントツール | MyTools",
     description: "入力したテキストの文字数をリアルタイムでカウントできます。",
-    url: "https://example.com/tools/text-counter",
+    url: "https://my-tools-site-git-main-uniunierrors-projects.vercel.app/tools/text-counter",
     siteName: "MyTools",
     locale: "ja_JP",
     type: "website",
   },
-  alternates: { canonical: "https://example.com/tools/text-counter" },
+  alternates: { canonical: "https://my-tools-site-git-main-uniunierrors-projects.vercel.app/tools/text-counter" },
 };
 
 export default function TextCounterPage() {

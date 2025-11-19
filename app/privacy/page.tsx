@@ -7,7 +7,7 @@ export const metadata = {
     title: "プライバシーポリシー | MyTools（仮）",
     description:
       "MyTools（仮） のプライバシーポリシー。個人情報の取り扱い、Cookieやアクセス解析の利用について説明します。",
-    url: "https://your-domain.example/privacy",
+    url: "https://my-tools-site-git-main-uniunierrors-projects.vercel.app/privacy",
   },
 };
 

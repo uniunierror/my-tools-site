@@ -8,12 +8,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: "パスワード生成ツール | MyTools",
     description: "安全なパスワードを簡単に生成できる無料ツール。",
-    url: "https://example.com/tools/password-gen",
+    url: "https://my-tools-site-git-main-uniunierrors-projects.vercel.app/tools/password-gen",
     siteName: "MyTools",
     locale: "ja_JP",
     type: "website",
   },
-  alternates: { canonical: "https://example.com/tools/password-gen" },
+  alternates: { canonical: "https://my-tools-site-git-main-uniunierrors-projects.vercel.app/tools/password-gen" },
 };
 
 export default function PasswordGenPage() {

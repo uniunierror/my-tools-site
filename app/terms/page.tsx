@@ -7,7 +7,7 @@ export const metadata = {
     title: "利用規約 | MyTools（仮）",
     description:
       "MyTools（仮） の利用規約ページ。サイト利用時のルール、免責事項、禁止事項などを記載しています。",
-    url: "https://your-domain.example/terms",
+    url: "https://my-tools-site-git-main-uniunierrors-projects.vercel.app/terms",
   },
 };
 

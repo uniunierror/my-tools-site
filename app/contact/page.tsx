@@ -8,19 +8,12 @@ export const metadata = {
 
 async function sendContactMessage(formData: FormData) {
   "use server";
-  // server-side processing
   const name = formData.get("name") as string | null;
   const email = formData.get("email") as string | null;
   const message = formData.get("message") as string | null;
 
-  // TODO: ここでメール送信 or DB保存に置き換える
-  // 例: await fetch(MAIL_API_URL, { method: "POST", body: JSON.stringify({ name, email, message }) });
-
-  // 一旦サーバーのログに出す（デバッグ用）
   console.log("[contact] received", { name, email, message });
 
-  // 送信後はサンクスページまたは同ページでリダイレクト
-  // ここでは送信完了後にトップへリダイレクト（必要なら /contact/thanks を作る）
   redirect("/");
 }
 

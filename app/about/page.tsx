@@ -1,4 +1,3 @@
-// app/about/page.tsx
 export const metadata = {
   title: "このサイトについて | MyTools（仮）",
   description:
@@ -7,7 +6,7 @@ export const metadata = {
     title: "このサイトについて | MyTools（仮）",
     description:
       "MyTools は日常をちょっと便利にする無料のWebツール集です。文字数カウント、日付計算、パスワード生成など、シンプルで実用的なツールを提供します。",
-    url: "https://your-domain.example/about",
+    url: "https://my-tools-site-git-main-uniunierrors-projects.vercel.app/about",
   },
 };
 

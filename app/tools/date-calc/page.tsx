@@ -8,12 +8,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: "日付計算ツール | MyTools",
     description: "開始日と終了日を入力するだけで日数差を自動計算します。",
-    url: "https://example.com/tools/date-calc",
+    url: "https://my-tools-site-git-main-uniunierrors-projects.vercel.app/tools/date-calc",
     siteName: "MyTools",
     locale: "ja_JP",
     type: "website",
   },
-  alternates: { canonical: "https://example.com/tools/date-calc" },
+  alternates: { canonical: "https://my-tools-site-git-main-uniunierrors-projects.vercel.app/tools/date-calc" },
 };
 
 export default function DateCalcPage() {

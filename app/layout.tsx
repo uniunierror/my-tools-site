@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 const siteName = "MyTools";
-const siteUrl = "https://example.com"; // ★本番公開前に必ず変更！
+const siteUrl = "https://my-tools-site-git-main-uniunierrors-projects.vercel.app"; // ★本番公開前に必ず変更！
 const siteDescription =
   "文字数カウントや日付計算など、日常に役立つ無料ツールをまとめたサイト。";
 
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     siteName: siteName,
     images: [
       {
-        url: "/og/default-og.png", // public/og/default-og.png を配置してください
+        url: "/og/default-og.png",
         width: 1200,
         height: 630,
         alt: siteName,
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: "./", // ✅ 修正: 相対パスにすることで各ページのURLに対応
+    canonical: "./",
   },
 };
 

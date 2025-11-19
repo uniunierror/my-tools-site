@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { getAllPostsMeta } from "@/lib/posts";
 import { tools } from "@/lib/tools";
 
-const baseUrl = "https://your-domain.com"; // ← ここを実ドメインに変更
+const baseUrl = "https://my-tools-site-git-main-uniunierrors-projects.vercel.app";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages: MetadataRoute.Sitemap = [

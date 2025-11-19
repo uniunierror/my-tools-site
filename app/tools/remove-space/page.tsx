@@ -17,12 +17,12 @@ export const metadata: Metadata = {
     title: "スペース削除ツール｜MyTools",
     description:
       "文章中のスペースをワンクリックで削除できる便利な無料ツール。",
-    url: "https://example.com/tools/remove-space",
+    url: "https://my-tools-site-git-main-uniunierrors-projects.vercel.app/tools/remove-space",
     siteName: "MyTools",
     locale: "ja_JP",
     type: "website",
   },
-  alternates: { canonical: "https://example.com/tools/remove-space" },
+  alternates: { canonical: "https://my-tools-site-git-main-uniunierrors-projects.vercel.app/tools/remove-space" },
 };
 
 export default function RemoveSpacePage() {
