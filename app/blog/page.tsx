@@ -1,4 +1,3 @@
-// app/blog/page.tsx
 import Link from "next/link";
 import { getAllPostsMeta } from "@/lib/posts";
 import type { Metadata } from "next";
@@ -46,7 +45,13 @@ export default async function BlogPage() {
               headline: post.title,
               url: `https://your-domain.com/blog/${post.slug}`,
               datePublished: post.date,
+              dateModified: post.date,
               description: post.description,
+              // 👇 余裕があれば author (著者) も追加するとGoogleに好まれます
+              author: {
+                "@type": "Person",
+                name: "管理者",
+              },
             })),
           }),
         }}

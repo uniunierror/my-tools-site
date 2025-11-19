@@ -5,28 +5,31 @@ import type { Metadata } from "next";
 
 type Props = { params: Promise<{ slug: string }> };
 
-// ✅ SEO用メタデータ生成（Next.js 15対応）
+function stripHtml(html: string) {
+  return html.replace(/<[^>]+>/g, "");
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params; // ← ✅ Promiseをアンラップ
+  const { slug } = await params;
   const post = await getPostBySlug(slug);
 
   if (!post) return { title: "記事が見つかりません" };
 
+  const cleanDescription = stripHtml(post.contentHtml).slice(0, 120);
+
   return {
     title: `${post.title} | My Tools Blog`,
-    description: post.description || post.contentHtml.slice(0, 120),
+    description: post.description || `${cleanDescription}...`,
   };
 }
 
-// ✅ 静的パス生成
 export async function generateStaticParams() {
   const posts = await getAllPostsMeta();
   return posts.map((p) => ({ slug: p.slug }));
 }
 
-// ✅ 記事ページ本体
 export default async function PostPage({ params }: Props) {
-  const { slug } = await params; // ← ✅ Promiseをアンラップ
+  const { slug } = await params;
   const post = await getPostBySlug(slug);
 
   if (!post) return notFound();
