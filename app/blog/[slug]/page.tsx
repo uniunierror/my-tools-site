@@ -2,6 +2,8 @@ import { getPostBySlug, getAllPostsMeta } from "@/lib/posts";
 import { notFound } from "next/navigation";
 import PostBody from "../components/PostBody";
 import type { Metadata } from "next";
+import { getCategoryLabel } from "@/lib/category";
+import Link from "next/link";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -16,10 +18,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!post) return { title: "記事が見つかりません" };
 
   const cleanDescription = stripHtml(post.contentHtml).slice(0, 120);
+  const categoryLabel = getCategoryLabel(post.category);
 
   return {
-    title: `${post.title} | My Tools Blog`,
+    title: `${post.title} | ${categoryLabel} | My Tools Blog`,
     description: post.description || `${cleanDescription}...`,
+    alternates: {
+      canonical: `https://my-tools-site-git-main-uniunierrors-projects.vercel.app/blog/${slug}`,
+    },
   };
 }
 
@@ -34,12 +40,48 @@ export default async function PostPage({ params }: Props) {
 
   if (!post) return notFound();
 
+  const label = getCategoryLabel(post.category);
+
   return (
     <main className="max-w-3xl mx-auto p-6">
+
+      {/* 🧭 パンくずリスト */}
+      <nav className="text-sm text-gray-400 mb-4">
+        <ul className="flex items-center gap-2">
+          <li>
+            <Link href="/">Home</Link>
+          </li>
+          <li>/</li>
+          <li>
+            <Link href="/blog">Blog</Link>
+          </li>
+          <li>/</li>
+          <li>
+            <Link href={`/blog/category/${post.category}`}>
+              {label}
+            </Link>
+          </li>
+          <li>/</li>
+          <li className="text-gray-300">{post.title}</li>
+        </ul>
+      </nav>
+
       <h1 className="text-3xl font-bold mb-2">{post.title}</h1>
+
       <div className="text-sm text-gray-500 mb-6">
         {new Date(post.date).toLocaleDateString("ja-JP")}
       </div>
+
+      {/* 🏷 カテゴリ表示（日本語ラベル化） */}
+      <p className="text-sm text-gray-400 mb-4">
+        カテゴリ：
+        <Link
+          href={`/blog/category/${post.category}`}
+          className="hover:underline text-blue-400"
+        >
+          {label}
+        </Link>
+      </p>
 
       <PostBody html={post.contentHtml} />
     </main>

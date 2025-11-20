@@ -3,21 +3,23 @@ import { getAllPostsMeta } from "@/lib/posts";
 import { tools } from "@/lib/tools";
 
 const baseUrl = "https://my-tools-site-git-main-uniunierrors-projects.vercel.app";
+const NOW = new Date().toISOString();
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages: MetadataRoute.Sitemap = [
-    { url: `${baseUrl}/`, lastModified: new Date().toISOString() },
-    { url: `${baseUrl}/about`, lastModified: new Date().toISOString() },
-    { url: `${baseUrl}/contact`, lastModified: new Date().toISOString() },
-    { url: `${baseUrl}/privacy`, lastModified: new Date().toISOString() },
-    { url: `${baseUrl}/terms`, lastModified: new Date().toISOString() },
-    { url: `${baseUrl}/tools`, lastModified: new Date().toISOString() },
-    { url: `${baseUrl}/blog`, lastModified: new Date().toISOString() },
+    { url: `${baseUrl}/`, lastModified: NOW },
+    { url: `${baseUrl}/about`, lastModified: NOW },
+    { url: `${baseUrl}/contact`, lastModified: NOW },
+    { url: `${baseUrl}/privacy`, lastModified: NOW },
+    { url: `${baseUrl}/terms`, lastModified: NOW },
+    { url: `${baseUrl}/tools`, lastModified: NOW },
+    { url: `${baseUrl}/blog`, lastModified: NOW },
+    { url: `${baseUrl}/blog/category`, lastModified: NOW },
   ];
 
   const toolPages: MetadataRoute.Sitemap = tools.map((t) => ({
     url: `${baseUrl}/tools/${t.slug}`,
-    lastModified: new Date().toISOString(),
+    lastModified: NOW,
   }));
 
   const posts = await getAllPostsMeta();
@@ -26,5 +28,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date(p.date).toISOString(),
   }));
 
-  return [...staticPages, ...toolPages, ...postPages];
+  const categories = Array.from(new Set(posts.map((p) => p.category)));
+
+  const categoryPages: MetadataRoute.Sitemap = categories.map((c) => ({
+    url: `${baseUrl}/blog/category/${c}`,
+    lastModified: NOW,
+  }));
+
+  return [
+    ...staticPages,
+    ...toolPages,
+    ...postPages,
+    ...categoryPages,
+  ];
 }

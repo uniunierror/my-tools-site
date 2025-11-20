@@ -9,6 +9,7 @@ export type PostMeta = {
   title: string;
   date: string;
   description?: string;
+  category: string;
 };
 
 export type Post = PostMeta & {
@@ -19,17 +20,20 @@ const postsDirectory = path.join(process.cwd(), "posts");
 
 export async function getAllPostsMeta(): Promise<PostMeta[]> {
   const fileNames = fs.readdirSync(postsDirectory);
+
   const posts = await Promise.all(
     fileNames.map(async (fileName) => {
       const slug = fileName.replace(/\.md$/, "");
       const fullPath = path.join(postsDirectory, fileName);
       const fileContents = fs.readFileSync(fullPath, "utf8");
       const { data } = matter(fileContents);
+
       return {
         slug,
         title: data.title || slug,
         date: data.date || "1970-01-01",
         description: data.description || "",
+        category: data.category || "other",
       };
     })
   );
@@ -52,6 +56,7 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
     title: data.title || slug,
     date: data.date || "1970-01-01",
     description: data.description || "",
+    category: data.category || "other",
     contentHtml,
   };
 }
