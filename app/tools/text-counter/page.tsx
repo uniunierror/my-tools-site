@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: "文字数カウントツール | MyTools",
     description: "入力した文字数をリアルタイムでカウントします。",
     url: "https://my-tools-site-git-main-uniunierrors-projects.vercel.app/tools/text-counter",
-    images: ["/og/default.png"],
+    images: ["/og/default-og.png"],
   },
   alternates: {
     canonical:

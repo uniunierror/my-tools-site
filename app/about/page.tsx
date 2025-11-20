@@ -7,7 +7,7 @@ export const metadata = {
     description:
       "MyTools（仮）は日常をちょっと便利にする無料のWebツール集です。文字カウントや日付計算など実用的なツールを提供します。",
     url: "https://my-tools-site-git-main-uniunierrors-projects.vercel.app/about",
-    images: ["/og/default.png"],
+    images: ["/og/default-og.png"],
   },
   alternates: {
     canonical:

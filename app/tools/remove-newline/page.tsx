@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: "改行削除ツール｜MyTools",
     description: "文章中の改行をワンクリックで削除できる便利な無料ツール。",
     url: "https://my-tools-site-git-main-uniunierrors-projects.vercel.app/tools/remove-newline",
-    images: ["/og/default.png"],
+    images: ["/og/default-og.png"],
   },
   alternates: {
     canonical:

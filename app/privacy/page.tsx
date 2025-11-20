@@ -7,7 +7,7 @@ export const metadata = {
     description:
       "MyTools（仮）のプライバシーポリシー。個人情報の取り扱いやアクセス解析について説明します。",
     url: "https://my-tools-site-git-main-uniunierrors-projects.vercel.app/privacy",
-    images: ["/og/default.png"],
+    images: ["/og/default-og.png"],
   },
   alternates: {
     canonical:

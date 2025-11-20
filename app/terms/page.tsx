@@ -7,7 +7,7 @@ export const metadata = {
     description:
       "MyTools（仮）の利用規約ページ。利用時のルールや免責事項を記載しています。",
     url: "https://my-tools-site-git-main-uniunierrors-projects.vercel.app/terms",
-    images: ["/og/default.png"],
+    images: ["/og/default-og.png"],
   },
   alternates: {
     canonical:

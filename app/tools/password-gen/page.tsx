@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: "パスワード生成ツール | MyTools",
     description: "安全なパスワードを簡単に生成できる無料ツール。",
     url: "https://my-tools-site-git-main-uniunierrors-projects.vercel.app/tools/password-gen",
-    images: ["/og/default.png"],
+    images: ["/og/default-og.png"],
   },
   alternates: {
     canonical:

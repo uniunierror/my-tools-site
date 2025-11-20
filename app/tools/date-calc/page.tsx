@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: "日付計算ツール | MyTools",
     description: "開始日と終了日を入力するだけで日数差を自動計算します。",
     url: "https://my-tools-site-git-main-uniunierrors-projects.vercel.app/tools/date-calc",
-    images: ["/og/default.png"],
+    images: ["/og/default-og.png"],
   },
   alternates: {
     canonical:

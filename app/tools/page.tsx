@@ -8,7 +8,7 @@ export const metadata = {
     title: "ツール一覧 | MyTools（仮）",
     description: "MyTools（仮）で利用できる無料Webツール一覧ページです。",
     url: "https://my-tools-site-git-main-uniunierrors-projects.vercel.app/tools",
-    images: ["/og/default.png"],
+    images: ["/og/default-og.png"],
   },
   alternates: {
     canonical:

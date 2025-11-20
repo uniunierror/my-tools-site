@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: "スペース削除ツール｜MyTools",
     description: "文章中のスペースをワンクリックで削除できる便利な無料ツール。",
     url: "https://my-tools-site-git-main-uniunierrors-projects.vercel.app/tools/remove-space",
-    images: ["/og/default.png"],
+    images: ["/og/default-og.png"],
   },
   alternates: {
     canonical:

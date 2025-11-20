@@ -9,7 +9,7 @@ export const metadata = {
     description:
       "MyTools（仮）へのお問い合わせフォームです。不具合報告やご意見はこちらから。",
     url: "https://my-tools-site-git-main-uniunierrors-projects.vercel.app/contact",
-    images: ["/og/default.png"],
+    images: ["/og/default-og.png"],
   },
   alternates: {
     canonical:
