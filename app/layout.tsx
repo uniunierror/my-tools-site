@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 const siteName = "MyTools";
-const siteUrl = "https://my-tools-site-git-main-uniunierrors-projects.vercel.app"; // ★本番公開前に必ず変更！
+const siteUrl = "https://my-tools-site-git-main-uniunierrors-projects.vercel.app";
 const siteDescription =
   "文字数カウントや日付計算など、日常に役立つ無料ツールをまとめたサイト。";
 
@@ -41,8 +41,9 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: "./",
+    canonical: siteUrl,
   },
+
 };
 
 function Header() {
@@ -68,6 +69,26 @@ function Header() {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ja">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: siteName,
+              url: siteUrl,
+              description: siteDescription,
+              publisher: {
+                "@type": "Organization",
+                name: siteName,
+                url: siteUrl,
+              },
+            }),
+          }}
+        />
+      </head>
+
       <body className="bg-gray-950 text-gray-100 min-h-screen flex flex-col">
         <Header />
         <main className="flex-1 max-w-5xl mx-auto px-6 py-8">{children}</main>

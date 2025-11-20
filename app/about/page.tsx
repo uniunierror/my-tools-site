@@ -1,14 +1,20 @@
 export const metadata = {
   title: "このサイトについて | MyTools（仮）",
   description:
-    "MyTools は日常をちょっと便利にする無料のWebツール集です。文字数カウント、日付計算、パスワード生成など、シンプルで実用的なツールを提供します。",
+    "MyTools（仮）は日常をちょっと便利にする無料のWebツール集です。文字カウントや日付計算など実用的なツールを提供します。",
   openGraph: {
     title: "このサイトについて | MyTools（仮）",
     description:
-      "MyTools は日常をちょっと便利にする無料のWebツール集です。文字数カウント、日付計算、パスワード生成など、シンプルで実用的なツールを提供します。",
+      "MyTools（仮）は日常をちょっと便利にする無料のWebツール集です。文字カウントや日付計算など実用的なツールを提供します。",
     url: "https://my-tools-site-git-main-uniunierrors-projects.vercel.app/about",
+    images: ["/og/default.png"],
+  },
+  alternates: {
+    canonical:
+      "https://my-tools-site-git-main-uniunierrors-projects.vercel.app/about",
   },
 };
+
 
 export default function AboutPage() {
   return (

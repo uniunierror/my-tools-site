@@ -1,9 +1,23 @@
 import Link from "next/link";
 
+export const metadata = {
+  title: "便利ツール集 | MyTools",
+  description:
+    "文字数カウント・日付計算・改行削除など、日常に役立つ無料ツールをまとめたサイト。",
+  alternates: {
+    canonical: "https://my-tools-site-git-main-uniunierrors-projects.vercel.app",
+  },
+};
+
+
 const tools = [
   { title: "文字数カウント", slug: "text-counter", desc: "入力した文章の文字数を即時にカウント" },
   { title: "日付計算", slug: "date-calc", desc: "2つの日付の差を計算します" },
+  { title: "改行削除", slug: "remove-newline", desc: "文章中の改行をまとめて削除" },
+  { title: "スペース削除", slug: "remove-space", desc: "文章中の空白を一括削除" },
+  { title: "パスワード生成", slug: "password-gen", desc: "安全なパスワードをワンクリック生成" },
 ];
+
 
 export default function HomePage() {
   return (

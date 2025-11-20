@@ -1,15 +1,20 @@
-// app/privacy/page.tsx
 export const metadata = {
   title: "プライバシーポリシー | MyTools（仮）",
   description:
-    "MyTools（仮） のプライバシーポリシー。個人情報の取り扱い、Cookieやアクセス解析の利用について説明します。",
+    "MyTools（仮）のプライバシーポリシー。個人情報の取り扱いやアクセス解析について説明します。",
   openGraph: {
     title: "プライバシーポリシー | MyTools（仮）",
     description:
-      "MyTools（仮） のプライバシーポリシー。個人情報の取り扱い、Cookieやアクセス解析の利用について説明します。",
+      "MyTools（仮）のプライバシーポリシー。個人情報の取り扱いやアクセス解析について説明します。",
     url: "https://my-tools-site-git-main-uniunierrors-projects.vercel.app/privacy",
+    images: ["/og/default.png"],
+  },
+  alternates: {
+    canonical:
+      "https://my-tools-site-git-main-uniunierrors-projects.vercel.app/privacy",
   },
 };
+
 
 export default function PrivacyPage() {
   return (

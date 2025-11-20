@@ -1,15 +1,20 @@
-// app/terms/page.tsx
 export const metadata = {
   title: "利用規約 | MyTools（仮）",
   description:
-    "MyTools（仮） の利用規約ページ。サイト利用時のルール、免責事項、禁止事項などを記載しています。",
+    "MyTools（仮）の利用規約ページ。利用時のルールや免責事項を記載しています。",
   openGraph: {
     title: "利用規約 | MyTools（仮）",
     description:
-      "MyTools（仮） の利用規約ページ。サイト利用時のルール、免責事項、禁止事項などを記載しています。",
+      "MyTools（仮）の利用規約ページ。利用時のルールや免責事項を記載しています。",
     url: "https://my-tools-site-git-main-uniunierrors-projects.vercel.app/terms",
+    images: ["/og/default.png"],
+  },
+  alternates: {
+    canonical:
+      "https://my-tools-site-git-main-uniunierrors-projects.vercel.app/terms",
   },
 };
+
 
 export default function TermsPage() {
   return (

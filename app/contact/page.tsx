@@ -1,10 +1,22 @@
-// app/contact/page.tsx
 import { redirect } from "next/navigation";
 
 export const metadata = {
   title: "お問い合わせ | MyTools（仮）",
-  description: "MyTools（仮）へのお問い合わせフォームです。ご意見・不具合報告等を受け付けます。",
+  description:
+    "MyTools（仮）へのお問い合わせフォームです。不具合報告やご意見はこちらから。",
+  openGraph: {
+    title: "お問い合わせ | MyTools（仮）",
+    description:
+      "MyTools（仮）へのお問い合わせフォームです。不具合報告やご意見はこちらから。",
+    url: "https://my-tools-site-git-main-uniunierrors-projects.vercel.app/contact",
+    images: ["/og/default.png"],
+  },
+  alternates: {
+    canonical:
+      "https://my-tools-site-git-main-uniunierrors-projects.vercel.app/contact",
+  },
 };
+
 
 async function sendContactMessage(formData: FormData) {
   "use server";
