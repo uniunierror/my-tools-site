@@ -4,6 +4,7 @@ import { tools } from "@/lib/tools";
 
 const baseUrl = "https://my-tools-site-git-main-uniunierrors-projects.vercel.app";
 const NOW = new Date().toISOString();
+const POSTS_PER_PAGE = 10;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages: MetadataRoute.Sitemap = [
@@ -22,11 +23,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: NOW,
   }));
 
+  // 全記事取得
   const posts = await getAllPostsMeta();
+
   const postPages: MetadataRoute.Sitemap = posts.map((p) => ({
     url: `${baseUrl}/blog/${p.slug}`,
     lastModified: new Date(p.date).toISOString(),
   }));
+
+  // ■■■ ここから追加：ブログ一覧のページネーション URL 生成 ■■■
+  const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
+
+  const blogPaginationPages: MetadataRoute.Sitemap = Array.from(
+    { length: totalPages },
+    (_, i) => ({
+      url: `${baseUrl}/blog/page/${i + 1}`,
+      lastModified: NOW,
+    })
+  );
+  // ■■■ 追加ここまで ■■■
 
   const categories = Array.from(new Set(posts.map((p) => p.category)));
 
@@ -39,6 +54,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...staticPages,
     ...toolPages,
     ...postPages,
+    ...blogPaginationPages, // ← ページネーションを sitemap に追加
     ...categoryPages,
   ];
 }

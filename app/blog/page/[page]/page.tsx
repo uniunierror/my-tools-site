@@ -6,38 +6,47 @@ const POSTS_PER_PAGE = 10;
 const BASE_URL =
   "https://my-tools-site-git-main-uniunierrors-projects.vercel.app";
 
-export const metadata: Metadata = {
-  title: "ブログ一覧 | My Tools",
-  description: "最新の記事一覧をお届けします。",
-  alternates: {
-    canonical: `${BASE_URL}/blog`,
-  },
-  openGraph: {
-    title: "ブログ一覧 | My Tools",
-    description: "最新の記事一覧をお届けします。",
-    url: `${BASE_URL}/blog`,
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "ブログ一覧 | My Tools",
-    description: "最新の記事一覧をお届けします。",
-  },
+type Props = {
+  params: Promise<{ page: string }>;
 };
 
-export default async function BlogPage() {
+// SEO metadata（ページ番号対応）
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { page } = await params;
+
+  return {
+    title: `ブログ一覧（${page}ページ目） | My Tools`,
+    description: `${page}ページ目のブログ記事一覧です。`,
+    alternates: {
+      canonical: `${BASE_URL}/blog/page/${page}`,
+    },
+    openGraph: {
+      title: `ブログ一覧（${page}ページ目） | My Tools`,
+      description: `${page}ページ目のブログ記事一覧です。`,
+      url: `${BASE_URL}/blog/page/${page}`,
+      type: "website",
+    },
+  };
+}
+
+export default async function BlogPage({ params }: Props) {
+  const { page } = await params;
+  const pageNum = parseInt(page);
+
   const allPosts = await getAllPostsMeta();
 
-  const page = 1;
-  const startIndex = 0;
-  const endIndex = POSTS_PER_PAGE;
+  const startIndex = (pageNum - 1) * POSTS_PER_PAGE;
+  const endIndex = startIndex + POSTS_PER_PAGE;
+
   const posts = allPosts.slice(startIndex, endIndex);
 
   const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
 
   return (
     <main className="max-w-3xl mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6">ブログ</h1>
+      <h1 className="text-3xl font-bold mb-6">
+        ブログ（{pageNum}ページ目）
+      </h1>
 
       <ul className="space-y-6">
         {posts.map((post) => (
@@ -58,13 +67,14 @@ export default async function BlogPage() {
         ))}
       </ul>
 
-      {/* ページネーション */}
-      <Pagination currentPage={page} totalPages={totalPages} />
+      <Pagination currentPage={pageNum} totalPages={totalPages} />
     </main>
   );
 }
 
+// --------------------------------------------
 // 共通ページネーションコンポーネント
+// --------------------------------------------
 function Pagination({
   currentPage,
   totalPages,
