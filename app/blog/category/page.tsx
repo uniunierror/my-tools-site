@@ -1,5 +1,5 @@
 import { getAllPostsMeta } from "@/lib/posts";
-import { getCategoryLabel } from "@/lib/category"; // ← 追加
+import { getCategoryLabel } from "@/lib/category";
 import Link from "next/link";
 
 export default async function CategoryListPage() {

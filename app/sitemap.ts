@@ -23,7 +23,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: NOW,
   }));
 
-  // 全記事取得
   const posts = await getAllPostsMeta();
 
   const postPages: MetadataRoute.Sitemap = posts.map((p) => ({
@@ -31,7 +30,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date(p.date).toISOString(),
   }));
 
-  // ■■■ ここから追加：ブログ一覧のページネーション URL 生成 ■■■
   const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
 
   const blogPaginationPages: MetadataRoute.Sitemap = Array.from(
@@ -41,7 +39,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: NOW,
     })
   );
-  // ■■■ 追加ここまで ■■■
 
   const categories = Array.from(new Set(posts.map((p) => p.category)));
 
@@ -54,7 +51,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...staticPages,
     ...toolPages,
     ...postPages,
-    ...blogPaginationPages, // ← ページネーションを sitemap に追加
+    ...blogPaginationPages,
     ...categoryPages,
   ];
 }
