@@ -1,7 +1,0 @@
-{
-  "title": "改行削除ツール",
-  "slug": "remove-newline",
-  "description": "文章内の改行を一括削除して1行にまとめます。",
-  "category": "text",
-  "tags": ["文字数", "カウント", "文章チェック"]
-}

@@ -7,7 +7,7 @@ export type Tool = {
 
 export const tools: Tool[] = [
   {
-    title: "文字数カウント",
+    title: "文字数カウントあああ",
     slug: "text-counter",
     desc: "入力した文章の文字数を即時にカウントします。",
   },
