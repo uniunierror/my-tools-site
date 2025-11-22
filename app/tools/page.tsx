@@ -1,8 +1,7 @@
 import Link from "next/link";
-import { getAllTools } from "@/lib/tools";
-import type { Metadata } from "next";
+import { tools } from "@/lib/tools";
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "ツール一覧 | MyTools（仮）",
   description: "MyTools（仮）で利用できる無料Webツール一覧ページです。",
   openGraph: {
@@ -18,12 +17,9 @@ export const metadata: Metadata = {
 };
 
 export default function ToolsPage() {
-  const tools = getAllTools(); // ← JSON 読み込みに変更
-
   return (
-    <section className="py-16 max-w-5xl mx-auto px-6">
+    <section className="py-16">
       <h2 className="text-3xl font-bold mb-8 text-center">ツール一覧</h2>
-
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {tools.map((tool) => (
           <Link
@@ -32,7 +28,7 @@ export default function ToolsPage() {
             className="block p-6 bg-white/10 rounded-2xl shadow hover:shadow-lg transition"
           >
             <h3 className="text-xl font-semibold mb-2">{tool.title}</h3>
-            <p className="text-gray-200 text-sm">{tool.description}</p>
+            <p className="text-gray-200 text-sm">{tool.desc}</p>
           </Link>
         ))}
       </div>
