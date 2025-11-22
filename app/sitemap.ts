@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllPostsMeta } from "@/lib/posts";
-import { tools } from "@/lib/tools";
+import { getAllTools } from "@/lib/tools";
 
 const baseUrl = "https://my-tools-site-git-main-uniunierrors-projects.vercel.app";
 const NOW = new Date().toISOString();
@@ -18,7 +18,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${baseUrl}/blog/category`, lastModified: NOW },
   ];
 
-  const toolPages: MetadataRoute.Sitemap = tools.map((t) => ({
+  // tools を JSON から取得
+  const toolList = getAllTools();
+
+  const toolPages: MetadataRoute.Sitemap = toolList.map((t) => ({
     url: `${baseUrl}/tools/${t.slug}`,
     lastModified: NOW,
   }));
