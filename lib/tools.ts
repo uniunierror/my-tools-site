@@ -1,34 +1,28 @@
+import fs from "fs";
+import path from "path";
 
-export type Tool = {
+export type ToolData = {
   title: string;
   slug: string;
-  desc: string;
+  description: string;
+  category: string;
+  tags: string[];
 };
 
-export const tools: Tool[] = [
-  {
-    title: "文字数カウント",
-    slug: "text-counter",
-    desc: "入力した文章の文字数を即時にカウントします。",
-  },
-  {
-    title: "日付計算",
-    slug: "date-calc",
-    desc: "2つの日付の差を計算します。",
-  },
-  {
-    title: "パスワード生成",
-    slug: "password-gen",
-    desc: "安全なランダムパスワードを生成します。",
-  },
-  {
-    title: "改行削除ツール",
-    slug: "remove-newline",
-    desc: "文章内の改行を一括削除して1行にまとめます。",
-  },
-  {
-    title: "スペース削除ツール",
-    slug: "remove-space",
-    desc: "文章内の空白・スペースをまとめて削除します。",
-  },
-];
+const toolsDir = path.join(process.cwd(), "data/tools");
+
+export function getAllTools(): ToolData[] {
+  const files = fs.readdirSync(toolsDir);
+
+  return files.map((file) => {
+    const filePath = path.join(toolsDir, file);
+    const json = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+    return json as ToolData;
+  });
+}
+
+export function getTool(slug: string): ToolData | null {
+  const filePath = path.join(toolsDir, `${slug}.json`);
+  if (!fs.existsSync(filePath)) return null;
+  return JSON.parse(fs.readFileSync(filePath, "utf-8"));
+}

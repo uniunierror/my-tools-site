@@ -1,0 +1,7 @@
+{
+  "title": "スペース削除ツール",
+  "slug": "remove-space",
+  "description": "文章内の空白・スペースをまとめて削除します。",
+  "category": "text",
+  "tags": ["文字数", "カウント", "文章チェック"]
+}

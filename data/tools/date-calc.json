@@ -1,0 +1,7 @@
+{
+  "title": "日付計算",
+  "slug": "date-calc",
+  "description": "2つの日付の差を計算します。",
+  "category": "text",
+  "tags": ["文字数", "カウント", "文章チェック"]
+}
