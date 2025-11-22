@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { tools } from "@/lib/tools";
 
 export const metadata = {
   title: "便利ツール集 | MyTools",
@@ -9,15 +10,13 @@ export const metadata = {
   },
 };
 
-
-const tools = [
-  { title: "文字数カウント", slug: "text-counter", desc: "入力した文章の文字数を即時にカウント" },
-  { title: "日付計算", slug: "date-calc", desc: "2つの日付の差を計算します" },
-  { title: "改行削除", slug: "remove-newline", desc: "文章中の改行をまとめて削除" },
-  { title: "スペース削除", slug: "remove-space", desc: "文章中の空白を一括削除" },
-  { title: "パスワード生成", slug: "password-gen", desc: "安全なパスワードをワンクリック生成" },
-];
-
+// const tools = [
+//   { title: "文字数カウント", slug: "text-counter", desc: "入力した文章の文字数を即時にカウント" },
+//   { title: "日付計算", slug: "date-calc", desc: "2つの日付の差を計算します" },
+//   { title: "改行削除", slug: "remove-newline", desc: "文章中の改行をまとめて削除" },
+//   { title: "スペース削除", slug: "remove-space", desc: "文章中の空白を一括削除" },
+//   { title: "パスワード生成", slug: "password-gen", desc: "安全なパスワードをワンクリック生成" },
+// ];
 
 export default function HomePage() {
   return (
@@ -28,10 +27,10 @@ export default function HomePage() {
           <Link
             key={tool.slug}
             href={`/tools/${tool.slug}`}
-            className="block p-6 bg-white/10 rounded-2xl shadow hover:bg-white/20 transition"
+            className="block p-6 bg-white/10 rounded-2xl shadow hover:shadow-lg transition"
           >
-            <h3 className="text-xl font-semibold mb-2 text-white">{tool.title}</h3>
-            <p className="text-gray-300 text-sm">{tool.desc}</p>
+            <h3 className="text-xl font-semibold mb-2">{tool.title}</h3>
+            <p className="text-gray-200 text-sm">{tool.desc}</p>
           </Link>
         ))}
       </div>
