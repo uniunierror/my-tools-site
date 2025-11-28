@@ -19,14 +19,14 @@ export type Post = PostMeta & {
 const postsDirectory = path.join(process.cwd(), "posts");
 
 export async function getAllPostsMeta(): Promise<PostMeta[]> {
-  const fileNames = fs.readdirSync(postsDirectory);
+  const filePaths = getAllMarkdownFiles(postsDirectory);
 
   const posts = await Promise.all(
-    fileNames.map(async (fileName) => {
-      const slug = fileName.replace(/\.md$/, "");
-      const fullPath = path.join(postsDirectory, fileName);
+    filePaths.map(async (fullPath) => {
       const fileContents = fs.readFileSync(fullPath, "utf8");
       const { data } = matter(fileContents);
+
+      const slug = path.basename(fullPath).replace(/\.md$/, "");
 
       return {
         slug,
@@ -41,15 +41,20 @@ export async function getAllPostsMeta(): Promise<PostMeta[]> {
   return posts.sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
-export async function getPostBySlug(slug: string): Promise<Post | null> {
-  const fullPath = path.join(postsDirectory, `${slug}.md`);
-  if (!fs.existsSync(fullPath)) return null;
 
-  const fileContents = fs.readFileSync(fullPath, "utf8");
+export async function getPostBySlug(slug: string): Promise<Post | null> {
+  const filePaths = getAllMarkdownFiles(postsDirectory);
+
+  const targetPath = filePaths.find(
+    (filePath) => path.basename(filePath) === `${slug}.md`
+  );
+
+  if (!targetPath) return null;
+
+  const fileContents = fs.readFileSync(targetPath, "utf8");
   const { data, content } = matter(fileContents);
 
   const processed = await remark().use(html).process(content);
-  const contentHtml = processed.toString();
 
   return {
     slug,
@@ -57,6 +62,26 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
     date: data.date || "1970-01-01",
     description: data.description || "",
     category: data.category || "other",
-    contentHtml,
+    contentHtml: processed.toString(),
   };
+}
+
+
+
+function getAllMarkdownFiles(dir: string): string[] {
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+
+  return entries.flatMap((entry) => {
+    const fullPath = path.join(dir, entry.name);
+
+    if (entry.isDirectory()) {
+      return getAllMarkdownFiles(fullPath);
+    }
+
+    if (entry.isFile() && entry.name.endsWith(".md")) {
+      return [fullPath];
+    }
+
+    return [];
+  });
 }

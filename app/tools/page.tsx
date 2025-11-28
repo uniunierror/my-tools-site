@@ -1,4 +1,3 @@
-// app/tools/page.tsx
 import Link from "next/link";
 import { tools } from "@/lib/tools";
 
