@@ -10,14 +10,6 @@ export const metadata = {
   },
 };
 
-// const tools = [
-//   { title: "文字数カウント", slug: "text-counter", desc: "入力した文章の文字数を即時にカウント" },
-//   { title: "日付計算", slug: "date-calc", desc: "2つの日付の差を計算します" },
-//   { title: "改行削除", slug: "remove-newline", desc: "文章中の改行をまとめて削除" },
-//   { title: "スペース削除", slug: "remove-space", desc: "文章中の空白を一括削除" },
-//   { title: "パスワード生成", slug: "password-gen", desc: "安全なパスワードをワンクリック生成" },
-// ];
-
 export default function HomePage() {
   return (
     <section className="py-16">

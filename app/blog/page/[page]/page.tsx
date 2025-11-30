@@ -10,7 +10,6 @@ type Props = {
   params: Promise<{ page: string }>;
 };
 
-// SEO metadata（ページ番号対応）
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { page } = await params;
 

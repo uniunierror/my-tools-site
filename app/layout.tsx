@@ -1,6 +1,9 @@
 import "./globals.css";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { ThemeProvider } from "../providers/ThemeProvider";
+import ThemeToggle from "../components/ThemeToggle";
+import { ThemeScript } from "./theme-script";
 
 const siteName = "MyTools";
 const siteUrl = "https://my-tools-site-git-main-uniunierrors-projects.vercel.app";
@@ -60,6 +63,7 @@ function Header() {
           <Link href="/contact" className="hover:text-blue-400 transition">Contact</Link>
           <Link href="/tools" className="hover:text-blue-400 transition">Tools</Link>
           <Link href="/blog" className="hover:text-blue-400 transition">Blog</Link>
+          <ThemeToggle />
         </nav>
       </div>
     </header>
@@ -68,7 +72,7 @@ function Header() {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ja">
+    <html lang="ja" suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
@@ -87,14 +91,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             }),
           }}
         />
+        <ThemeScript />
       </head>
 
       <body className="bg-gray-950 text-gray-100 min-h-screen flex flex-col">
+        <ThemeProvider>
         <Header />
         <main className="flex-1 max-w-5xl mx-auto px-6 py-8">{children}</main>
         <footer className="text-center text-sm text-gray-500 py-6 border-t border-gray-800">
           © {new Date().getFullYear()} {siteName}
         </footer>
+        </ThemeProvider>
       </body>
     </html>
   );
