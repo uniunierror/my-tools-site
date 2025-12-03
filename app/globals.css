@@ -4,29 +4,23 @@
    ベース（system = light 初期）
 ---------------------------------- */
 :root {
-  --background: #4f4f4f;
+  --background: #4f4f4f96;
   --foreground: #171717;
 }
 
-/* ---------------------------------
-   手動 Light Mode
----------------------------------- */
+/*  手動 Light Mode  ----------------------------------- */
 :root[data-theme="light"] {
-  --background: #4f4f4f;
+  --background: #4f4f4f96;
   --foreground: #171717;
 }
 
-/* ---------------------------------
-   手動 Dark Mode
----------------------------------- */
+/*  手動 Dark Mode  ------------------------------------ */
 :root[data-theme="dark"] {
   --background: #0a0a0a;
   --foreground: #ededed;
 }
 
-/* ---------------------------------
-   System Mode（未指定時のみ有効）
----------------------------------- */
+/*  System Mode（未指定時のみ有効）  ---------------------- */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
     --background: #0a0a0a;
@@ -34,23 +28,18 @@
   }
 }
 
-/* ---------------------------------
-   Tailwind v4 theme bridge
----------------------------------- */
-/* @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-} */
-
-/* ---------------------------------
-   Global body
----------------------------------- */
+/*  Global body  --------------------------------------- */
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
   transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.section-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: var(--foreground);
 }
