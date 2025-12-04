@@ -14,7 +14,7 @@ export default function ToolsPage() {
             className="block p-6 bg-white/10 rounded-2xl shadow hover:shadow-lg transition"
           >
             <h2 className="text-xl font-semibold mb-2">{tool.title}</h2>
-            <p className="text-gray-200 text-sm">{tool.desc}</p>
+            <p className="text-sm">{tool.desc}</p>
           </Link>
         ))}
       </div>

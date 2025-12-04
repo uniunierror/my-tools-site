@@ -32,7 +32,7 @@ export default function ThemeToggle() {
 
       {/* メニュー */}
       {open && (
-        <div className="absolute right-0 mt-2 w-36 rounded-lg border bg-gray-900 shadow-lg overflow-hidden z-50">
+        <div className="absolute right-0 mt-2 w-36 rounded-lg border shadow-lg overflow-hidden z-50">
           <Item
             active={theme === "light"}
             onClick={() => select("light")}
