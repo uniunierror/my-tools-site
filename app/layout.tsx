@@ -1,9 +1,9 @@
 import "./globals.css";
-import Link from "next/link";
 import type { Metadata } from "next";
 import { ThemeProvider } from "../providers/ThemeProvider";
-import ThemeToggle from "../components/ThemeToggle";
 import { ThemeScript } from "./theme-script";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 
 const siteName = "MyTools";
 const siteUrl = "https://my-tools-site-git-main-uniunierrors-projects.vercel.app";
@@ -49,27 +49,6 @@ export const metadata: Metadata = {
 
 };
 
-function Header() {
-  return (
-    <header className="bg-gray-900 text-white">
-      <div className="max-w-5xl mx-auto flex items-center justify-between px-6 py-4">
-        <Link href="/" className="text-xl font-bold hover:text-blue-400">
-          {siteName}
-        </Link>
-        <nav className="flex gap-6 text-sm">
-          <Link href="/about" className="hover:text-blue-400 transition">About</Link>
-          <Link href="/privacy" className="hover:text-blue-400 transition">Privacy</Link>
-          <Link href="/terms" className="hover:text-blue-400 transition">Terms</Link>
-          <Link href="/contact" className="hover:text-blue-400 transition">Contact</Link>
-          <Link href="/tools" className="hover:text-blue-400 transition">Tools</Link>
-          <Link href="/blog" className="hover:text-blue-400 transition">Blog</Link>
-          <ThemeToggle />
-        </nav>
-      </div>
-    </header>
-  );
-}
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ja" suppressHydrationWarning>
@@ -98,9 +77,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeProvider>
         <Header />
         <main className="flex-1 max-w-5xl mx-auto px-6 py-8">{children}</main>
-        <footer className="text-center text-sm text-gray-500 py-6 border-t border-gray-800">
-          © {new Date().getFullYear()} {siteName}
-        </footer>
+        <Footer />
         </ThemeProvider>
       </body>
     </html>

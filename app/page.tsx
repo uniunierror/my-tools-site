@@ -12,17 +12,17 @@ export const metadata = {
 
 export default function HomePage() {
   return (
-    <section className="py-16">
+    <section className="home-section">
       <h2 className="section-title">便利ツール集</h2>
-      <div className="grid sm:grid-cols-2 gap-6">
+      <div className="tool-grid">
         {tools.map((tool) => (
           <Link
             key={tool.slug}
             href={`/tools/${tool.slug}`}
-            className="block p-6 bg-white/10 rounded-2xl shadow hover:shadow-lg transition"
+            className="tool-card"
           >
-            <h3 className="text-xl font-semibold mb-2">{tool.title}</h3>
-            <p className="text-gray-200 text-sm">{tool.desc}</p>
+            <h3 className="tool-title">{tool.title}</h3>
+            <p className="tool-desc">{tool.desc}</p>
           </Link>
         ))}
       </div>
