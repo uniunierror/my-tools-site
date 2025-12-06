@@ -2,7 +2,7 @@
 const nextConfig = {
   // Turbopackを完全に無効化
   experimental: {
-    turbo: false,
+    // turbo: false,
   },
   reactStrictMode: true,
   webpack: (config) => {
