@@ -73,7 +73,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeScript />
       </head>
 
-      <body className="bg-gray-950 text-gray-100 min-h-screen flex flex-col">
+      <body className="min-h-screen flex flex-col">
         <ThemeProvider>
         <Header />
         <main className="flex-1 max-w-5xl mx-auto px-6 py-8">{children}</main>

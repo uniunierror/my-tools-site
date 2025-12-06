@@ -43,11 +43,11 @@ export default async function PostPage({ params }: Props) {
   const label = getCategoryLabel(post.category);
 
   return (
-    <main className="max-w-3xl mx-auto p-6">
+    <main className="w-full max-w-3xl mx-auto p-6">
 
       {/* 🧭 パンくずリスト */}
-      <nav className="text-sm text-gray-400 mb-4">
-        <ul className="flex items-center gap-2">
+      <nav className="text-sm mb-4">
+        <ul className="flex items-center gap-2  opacity-70">
           <li>
             <Link href="/">Home</Link>
           </li>
@@ -62,22 +62,22 @@ export default async function PostPage({ params }: Props) {
             </Link>
           </li>
           <li>/</li>
-          <li className="text-gray-300">{post.title}</li>
+          <li>{post.title}</li>
         </ul>
       </nav>
 
       <h1 className="text-3xl font-bold mb-2">{post.title}</h1>
 
-      <div className="text-sm text-gray-500 mb-6">
+      <div className="text-sm mb-6">
         {new Date(post.date).toLocaleDateString("ja-JP")}
       </div>
 
       {/* 🏷 カテゴリ表示（日本語ラベル化） */}
-      <p className="text-sm text-gray-400 mb-4">
+      <p className="text-sm mb-4">
         カテゴリ：
         <Link
           href={`/blog/category/${post.category}`}
-          className="hover:underline text-blue-400"
+          className=""
         >
           {label}
         </Link>

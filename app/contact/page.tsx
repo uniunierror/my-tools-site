@@ -17,7 +17,6 @@ export const metadata = {
   },
 };
 
-
 async function sendContactMessage(formData: FormData) {
   "use server";
   const name = formData.get("name") as string | null;
@@ -31,15 +30,15 @@ async function sendContactMessage(formData: FormData) {
 
 export default function ContactPage() {
   return (
-    <section className="py-16 max-w-2xl mx-auto px-6">
+    <section className="py-16 max-w-3xl mx-auto px-6">
       <h1 className="text-3xl font-bold mb-4">お問い合わせ</h1>
-      <p className="mb-6 text-gray-700">
+      <p className="mb-6">
         ご意見・不具合報告・機能要望などはこちらからご連絡ください。返信が必要な場合はメールアドレスをご記入ください。
       </p>
 
-      <form action={sendContactMessage} className="space-y-4 bg-white p-6 rounded-2xl shadow">
+      <form action={sendContactMessage} className="space-y-4 p-6 rounded-2xl shadow">
         <label className="block">
-          <span className="text-sm text-gray-600">お名前（任意）</span>
+          <span className="text-sm">お名前（任意）</span>
           <input
             name="name"
             type="text"
@@ -49,7 +48,7 @@ export default function ContactPage() {
         </label>
 
         <label className="block">
-          <span className="text-sm text-gray-600">メールアドレス（返信が必要な場合）</span>
+          <span className="text-sm">メールアドレス（返信が必要な場合）</span>
           <input
             name="email"
             type="email"
@@ -59,7 +58,7 @@ export default function ContactPage() {
         </label>
 
         <label className="block">
-          <span className="text-sm text-gray-600">お問い合わせ内容</span>
+          <span className="text-sm">お問い合わせ内容</span>
           <textarea
             name="message"
             className="mt-1 block w-full border rounded p-3 h-40"
@@ -74,7 +73,7 @@ export default function ContactPage() {
           >
             送信する
           </button>
-          <p className="text-sm text-gray-500">送信後、自動的にトップページに戻ります。</p>
+          <p className="text-sm">送信後、自動的にトップページに戻ります。</p>
         </div>
       </form>
     </section>

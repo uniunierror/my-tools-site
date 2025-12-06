@@ -45,7 +45,7 @@ export default async function CategoryPage({ params }: Props) {
   return (
     <section className="space-y-8">
       {/* パンくず */}
-      <nav className="text-sm text-gray-400">
+      <nav className="text-sm  opacity-70">
         <ol className="flex gap-1">
           <li>
             <Link href="/" className="hover:underline">
@@ -59,7 +59,7 @@ export default async function CategoryPage({ params }: Props) {
             </Link>{" "}
             &gt;
           </li>
-          <li className="text-gray-200">カテゴリ: {label}</li>
+          <li className="">カテゴリ: {label}</li>
         </ol>
       </nav>
 
@@ -73,11 +73,11 @@ export default async function CategoryPage({ params }: Props) {
         {filtered.map((post) => (
           <li
             key={post.slug}
-            className="p-4 bg-white/10 rounded-xl hover:bg-white/20 transition"
+            className="p-4 rounded-xl transition"
           >
             <Link href={`/blog/${post.slug}`}>
               <h2 className="text-xl font-semibold">{post.title}</h2>
-              <p className="text-gray-400 text-sm">{post.date}</p>
+              <p className="text-sm  opacity-70">{post.date}</p>
             </Link>
           </li>
         ))}

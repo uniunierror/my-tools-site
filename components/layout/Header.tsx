@@ -33,22 +33,22 @@ export default function Header() {
             </div>
 
             {/* モバイルメニュー */}
-            {/* {open && (
+            {open && (
                 <div className="mobile-menu">
                     <nav>
                         <NavLinks onClick={() => setOpen(false)} />
                         <ThemeToggle />
                     </nav>
                 </div>
-            )} */}
-            {open && (
+            )}
+            {/* {open && (
                 <div className="mobile-menu">
                     <nav>
                         <NavLinks />
                         <ThemeToggle />
                     </nav>
                 </div>
-            )}
+            )} */}
 
         </header>
     );

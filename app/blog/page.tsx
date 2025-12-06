@@ -36,7 +36,7 @@ export default async function BlogPage() {
   const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
 
   return (
-    <main className="max-w-3xl mx-auto p-6">
+    <main className="py-16 max-w-3xl mx-auto p-6">
       <h1 className="text-3xl font-bold mb-6">ブログ</h1>
 
       <ul className="space-y-6">
@@ -48,11 +48,11 @@ export default async function BlogPage() {
             >
               {post.title}
             </Link>
-            <div className="text-sm text-gray-500">
+            <div className="text-sm opacity-70">
               {new Date(post.date).toLocaleDateString("ja-JP")}
             </div>
             {post.description && (
-              <p className="text-gray-700 mt-1">{post.description}</p>
+              <p className="mt-1 opacity-70">{post.description}</p>
             )}
           </li>
         ))}
@@ -81,7 +81,7 @@ function Pagination({
           key={num}
           href={num === 1 ? `/blog` : `/blog/page/${num}`}
           className={`px-4 py-2 rounded-md border ${
-            num === currentPage ? "bg-white text-black" : "hover:bg-white/20"
+            num === currentPage ? "bg-(--foreground) text-(--background)" : "hover:bg-white/20"
           }`}
         >
           {num}
