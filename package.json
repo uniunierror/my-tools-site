@@ -6,8 +6,8 @@
     "dev": "next dev --webpack",
     "build": "next build --webpack",
     "build:opennext": "npx @opennextjs/cloudflare@latest build",
-    "dev:wrangler": "npx wrangler dev .worker-next",
-    "publish:wrangler": "npx wrangler publish .worker-next",
+    "dev:wrangler": "npx wrangler dev .open-next",
+    "publish:wrangler": "npx wrangler deploy .open-next",
     "start": "next start",
     "lint": "eslint"
   },
