@@ -1,0 +1,9 @@
+name = "my-tools-site-worker"
+main = ".worker-next/worker.js" 
+account_id = "c94eb169ea2030a789f5e9e6c63773b6" 
+compatibility_date = "2025-12-09" 
+workers_dev = true
+
+# OpenNextが出力する静的アセットの場所を指定
+[site]
+bucket = ".worker-next/assets"
