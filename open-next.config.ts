@@ -1,34 +1,40 @@
 // open-next.config.ts
-// このファイルは、Next.jsのビルド結果をCloudflare Workers形式に変換するための設定です。
-// OpenNext CLIの厳格な要件を満たすため、overrideブロックを明示します。
+// OpenNext CLIの厳格な要件（例示されたJSON構造）を完全に満たすための設定です。
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-  // ----------------------------------------------------
   // 1. Next.jsのページ/APIルートに関するメイン設定
-  // ----------------------------------------------------
   default: {
-    // 変換された Worker の出力先ディレクトリ
     out: ".worker-next",
     
-    // 💡 必須: CLIのバリデーションを通過させるために空のoverrideを追加
-    override: {}, 
+    // 💡 必須: CLIが要求するoverrideブロックを完全に定義する
+    override: {
+      wrapper: "cloudflare-node",
+      converter: "edge",
+      proxyExternalRequest: "fetch",
+      // キャッシュ設定はダミーで定義
+      incrementalCache: "dummy", 
+      tagCache: "dummy",
+      queue: "dummy",
+    },
   },
 
-  // ----------------------------------------------------
   // 2. Cloudflare Edge環境でNode.jsモジュールをどう扱うか
-  // ----------------------------------------------------
-  // Next.jsのApp Routerは、一部のNode.jsの内部モジュールを使用することがあります。
-  // これらをCloudflareの互換レイヤーで処理するよう指定します。
   edgeExternals: ["node:crypto", "node:async_hooks"],
 
 
-  // ----------------------------------------------------
   // 3. ミドルウェア (src/middleware.ts) に関する設定
-  // ----------------------------------------------------
-  // middlewareをWorkersで実行するために必須の設定です。
   middleware: {
-    // 外部ファイルとしてWorkerに含めることを指定
     external: true, 
+    // 💡 必須: CLIが要求するmiddlewareのoverrideブロックを完全に定義する
+    override: {
+      wrapper: "cloudflare-edge",
+      converter: "edge",
+      proxyExternalRequest: "fetch",
+      // キャッシュ設定はダミーで定義
+      incrementalCache: "dummy",
+      tagCache: "dummy",
+      queue: "dummy",
+    },
   },
 };
