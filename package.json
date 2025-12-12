@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --webpack",
-    "build": "next build",
+    "build": "next build --webpack",
     "build:opennext": "npx @opennextjs/cloudflare@latest build",
     "dev:wrangler": "npx wrangler dev .worker-next",
     "publish:wrangler": "npx wrangler publish .worker-next",
