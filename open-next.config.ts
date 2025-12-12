@@ -1,6 +1,6 @@
 // open-next.config.ts
 // このファイルは、Next.jsのビルド結果をCloudflare Workers形式に変換するための設定です。
-// 最新のOpenNext.jsの要件に合わせて、外部モジュールとミドルウェアの設定を追加します。
+// OpenNext CLIの厳格な要件を満たすため、overrideブロックを明示します。
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
@@ -11,13 +11,8 @@ export default {
     // 変換された Worker の出力先ディレクトリ
     out: ".worker-next",
     
-    // Cloudflare WorkersはNode.js環境ではないため、
-    // fsなどのNode.jsモジュールへの依存を避ける必要があります。
-    // Node.jsのビルトインモジュールを使用している場合は、ここで指定します。
-    // Next.jsのApp Routerでは 'node:async_hooks' などが使われることがあります。
-    // 今回、ブログ記事の読み込み（fs依存）を回避したため、特に大きな変更は不要ですが、
-    // エッジ環境でNode.jsモジュールを使用する場合はここに追加する必要があります。
-    // 例: edgeExternals: ["node:crypto", "node:async_hooks"],
+    // 💡 必須: CLIのバリデーションを通過させるために空のoverrideを追加
+    override: {}, 
   },
 
   // ----------------------------------------------------
@@ -35,7 +30,5 @@ export default {
   middleware: {
     // 外部ファイルとしてWorkerに含めることを指定
     external: true, 
-    // ミドルウェア用のカスタムオーバーライドは現在不要
-    // override: { ... }, 
   },
 };
