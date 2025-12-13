@@ -1,14 +1,24 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Edge Runtimeでfsアクセスを許可するためにNext.jsのExperimental設定を使用します
-  // Next.js 14ではこの設定がServerless環境でfsモジュールの動作を改善します。
+  // 必須: Cloudflare Workersで実行するための設定
+  output: 'standalone', 
+  
+  // 必須: fsモジュールが利用可能なNode.js互換モードを有効化
   experimental: {
     serverComponentsExternalPackages: ["fs"],
   },
-  
-  // OpenNextのために、Workersでコンテンツディレクトリをバンドルする設定を追加
-  // Next.js 14では 'output' の設定が必須
-  output: 'standalone', 
+
+  // 💡 OpenNextのバンドル設定を追加
+  // Next.jsのビルドプロセスで'content'ディレクトリをWorkerのバンドルに含めるよう強制します。
+  opennext: {
+    assets: [
+      {
+        type: 'directory',
+        // 'content'ディレクトリをバンドルに含める
+        path: 'content', 
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;

@@ -16,8 +16,14 @@ export type Post = PostMeta & {
   contentHtml: string;
 };
 
-// 💡 修正点: ファイルパスをプロジェクトルートの "content/posts" ディレクトリに変更
-const postsDirectory = path.join(process.cwd(), "content/posts");
+const postsDirectory = path.join(
+  __dirname, 
+  "..", 
+  "..", 
+  "..", 
+  "content", 
+  "posts"
+);
 
 export async function getAllPostsMeta(): Promise<PostMeta[]> {
   const filePaths = getAllMarkdownFiles(postsDirectory);
