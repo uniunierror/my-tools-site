@@ -1,5 +1,5 @@
 name = "my-tools-site-worker"
-main = ".open-next/worker.js" 
+main = "maintenance.js" 
 account_id = "c94eb169ea2030a789f5e9e6c63773b6" 
 compatibility_date = "2025-12-09" 
 workers_dev = true
